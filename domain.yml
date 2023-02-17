@@ -8,10 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-
-#responses:
-#  - where_ferran
-#  - where_professor
+  - where_ferran
+  - where_professor
 
 responses:
   utter_greet:
@@ -39,5 +37,10 @@ responses:
   utter_Ferran:
   - text: "Ferran is found in room 55.228, although that is not in the CSV"
 
-iration_time: 60
-carry_over_slots_to_new_session: true
+ ## utter_professor_collaborators:
+ ## -text: "Ok, THIIIIIS"
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
