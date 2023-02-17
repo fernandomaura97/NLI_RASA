@@ -40,7 +40,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_is_department
+  - intent: ask_is_department_on_university
   - action: utter_deny_department
 
 - story: 11.1 Is there an department for (ANSWERS YES)
@@ -110,7 +110,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: user_ask_weather
+  - intent: user_asks_weather
   - action: action_ask_weather
 
 - story: 1.1 What is Time
@@ -150,6 +150,3 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
-
-
-  version: "3.1"

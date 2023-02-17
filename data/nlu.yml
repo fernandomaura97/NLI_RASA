@@ -110,11 +110,12 @@ nlu:
 
 - intent: ask_url_department
   examples: |
+    
     - What is the website of the [AI&ML]{"entity": "department"} department
     - Provide a link to the [AI&ML]{"entity": "department"} department?
     - Where can I find more information of the [AI&ML]{"entity": "department"} group?
     - I want to have more information about the [AI&ML]{"entity": "deparment"}
-    _ I want more information of the department of [Jorge Lobe]{"entity": "professor"}
+    - I want more information of the department of [Jorge Lobe]{"entity": "professor"}
     - Where can I find more information about [Jorge Lobe]{"entity": "professor"}
     - Tell me more about [AI&ML]{"entity": "department"}
     - URL [AI&ML]{"entity": "department"}
@@ -194,10 +195,6 @@ nlu:
     - Who created you
     - Who came up with this chatbot?
     - Who are you?
-
-
-   
-
     - Do you know the department of the prof?
 
 - intent: asks_weather
