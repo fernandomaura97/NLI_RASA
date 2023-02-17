@@ -47,7 +47,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_is_department
+  - intent: ask_is_department_on_university
   - action: utter_confirm_department
 
 - story: 10.1 other professor also in department

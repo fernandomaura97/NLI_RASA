@@ -24,7 +24,7 @@ intents:
   - ask_other_professor_in_department
   - ask_department_professor
   - ask_developer_chatbot
-  - ask_weather
+  - user_asks_weather
   - ask_time
   - greet
   - affirm

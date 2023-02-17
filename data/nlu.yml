@@ -110,7 +110,6 @@ nlu:
 
 - intent: ask_url_department
   examples: |
-    
     - What is the website of the [AI&ML]{"entity": "department"} department
     - Provide a link to the [AI&ML]{"entity": "department"} department?
     - Where can I find more information of the [AI&ML]{"entity": "department"} group?
@@ -184,7 +183,7 @@ nlu:
 - intent: ask_developer_chatbot
   examples: |
     - Is Niels the developer
-    - Is Rafeal the developer
+    - Is Rafl the developer
     - Is Fernando the developer
     - The developer is awesome
     - Who made this chatbot
