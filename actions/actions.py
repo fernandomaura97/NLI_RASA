@@ -183,16 +183,17 @@ class ActionHelloWorld(Action):
         def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-                prof =  "Jorge Lobo"
+                prof =  tracker.get_slot("professor")
+                if not prof:
+                      message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
                 cols = ['Professor','Professor_First_Name','Professor_First_Last_Name','Professor_Last_First_Name','Professor_Last_Name']
                 test_df = df.loc[(df[cols]==prof.upper()).any(axis="columns")]
                 if len(test_df) ==1:
                     department = test_df['Department']
-                    mess1 = f"Professor {test_df['Professor_First_Last_Name']} is in the {department} department."
+                    message = f"Professor {test_df['Professor_First_Last_Name']} is in the {department} department."
                 else:
-                    mess1 = f"Sorry, but I could not find the department of {prof}. I only have then information of the department of the following professors: {df['Professor_First_Last_Name'].values}."
-                message = mess1 
-                dispatcher.utter_message(text=mess1)
+                    message = f"Sorry, but I could not find the department of {prof}. I only have then information of the department of the following professors: {df['Professor_First_Last_Name'].values}."      
+                dispatcher.utter_message(text=message)
 #
                 return []
         
@@ -204,7 +205,7 @@ class ActionHelloWorld(Action):
      def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-                #location =  tracker.get_slot("location")
+                location =  tracker.get_slot("location")
                 location = "Barcelona"
                 owm = OWM(key_weather)
                 mgr =owm.weather_manager()
