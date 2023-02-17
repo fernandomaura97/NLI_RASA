@@ -148,8 +148,6 @@ class ProfessorCollaboratorsAction(Action):
         
         return []
 
-
-
 class ActionHelloWorld(Action):
 
         def name(self) -> Text:

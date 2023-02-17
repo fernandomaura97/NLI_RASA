@@ -196,7 +196,7 @@ nlu:
     - Who are you?
     - Do you know the department of the prof?
 
-- intent: asks_weather
+- intent: user_asks_weather
   examples: |
     - What's the weather in [Berlin]{"entity": "location"} at the moment?
     - What's the weather today?
@@ -210,7 +210,7 @@ nlu:
     - The weather condition in [Italy]{"entity": "location"}
     - [Paris]{"entity": "location"} Temerature
     - May I know weather today
-    
+
 - intent: name
   examples: | 
     - Niels is There
