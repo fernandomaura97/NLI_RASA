@@ -83,14 +83,28 @@ df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 
 # Buildings = df.Building.unique()
 
+# def get_professor_room(name):
+#     index_name = name.strip()
+#     professor = df[df["Professor_First_Last_Name"] == index_name]
+#     #room_number = df.iloc[row_index]['Room']
+#     room_number = professor["Room"]
+
+#     return room_number     
+
 def get_professor_room(name):
-    index_name = name.strip()
-    professor = df[df["Professor_First_Last_Name"] == index_name]
-    #room_number = df.iloc[row_index]['Room']
-    room_number = professor["Room"]
+    # look up professor by name
 
-    return room_number     
+    name2 = name.strip()
+    professor = df.loc[df['Professor_First_Last_Name'] == name2]
 
+    if professor.empty:
+        # professor not found
+        return None
+
+    # extract room information
+    room = professor['Room'].iloc[0]
+
+    return room
 def get_professor_info(name):
         # look up professor by name
 
@@ -224,8 +238,7 @@ class ActionHelloWorld2(Action):
 
 
             (b,c) = get_professor_info(fuzzyname)
-            dada = get_professor_room(prof)
-            print("BIGCOCK", dada)
+            #dada = get_professor_room(prof)
             if (b == 0):
                   dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
                   return[]
