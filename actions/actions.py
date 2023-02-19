@@ -39,54 +39,54 @@ import random
 import scholarly
 
 key_weather = "9f6f77317e172b4aed01498eefd4ee96"
-df = pd.read_excel("Data_Teachers.xlsx")
-df.rename(columns={"Unnamed: 3": "Building", "NOMBRE": "Professor", "GRUPO ": "Department", "DESPACHO": "Room"}, inplace=True)
-df['Building'] = df['Building'].fillna("Unknown")
-df.dropna(axis=0, inplace=True)
-
-#Subtract professors for possible slot values later
-#Part 1 DF Creation
-out=df['Professor'].str.split(', ',expand=True)
-df['Professor_First_Name']=out[1]
-#df['Professor_Last_Name']=out[0].str.split(' ').str[0]
-df['Professor_Last_Name'] = out[0]
-df['Professor_First_Last_Name'] = df['Professor_First_Name'] +" "+ df['Professor_Last_Name']
-df['Professor_Last_First_Name'] = df['Professor_Last_Name'] +" "+ df['Professor_First_Name']
-df
-
-#Part 2 DF to list
-professors = []
-professors = np.append(professors, df['Professor_First_Name'].values)
-professors = np.append(professors, df['Professor_Last_Name'].values)
-professors = np.append(professors, df['Professor_First_Last_Name'].values)
-professors = np.append(professors, df['Professor_Last_First_Name'].values)
-professors_list = list(professors)
-professors_list = [x for x in professors_list if str(x) != 'nan']
-for i in range(len(professors_list)):
-    professors_list[i] = str(professors_list[i]).lower()
-professors_list[:5]
-
-possible_rooms = str(df.Room.unique())
-df['Room_with_Dot'] = (df.Room.astype(str).str[:2]+ '.'+ df.Room.astype(str).str[-2:])
-possible_rooms = np.append(possible_rooms, df['Room_with_Dot'].values)
-
-departments = df.Department.unique()
-out=df['Department'].str.split(': ',expand=True)
-df['Department_Full']=out[1]
-#df['Professor_Last_Name']=out[0].str.split(' ').str[0]
-df['Department_Short'] = out[0]
-departments = np.append(departments, df['Department_Full'].values)
-departments = np.append(departments, df['Department_Short'].values)
-
-Buildings = df.Building.unique()
+df = pd.read_excel("out_good.xlsx")
+df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 
 
+#JUST COMMENTING ALL OF THIS FOR NOW
+####    ********************************************************************####
+# df.dropna(axis=0, inplace=True)
 
+# #Subtract professors for possible slot values later
+# #Part 1 DF Creation
+# out=df['Professor'].str.split(', ',expand=True)
+# df['Professor_First_Name']=out[1]
+# #df['Professor_Last_Name']=out[0].str.split(' ').str[0]
+# df['Professor_Last_Name'] = out[0]
+# df['Professor_First_Last_Name'] = df['Professor_First_Name'] +" "+ df['Professor_Last_Name']
+# df['Professor_Last_First_Name'] = df['Professor_Last_Name'] +" "+ df['Professor_First_Name']
 
+# #Part 2 DF to list
+# professors = []
+# professors = np.append(professors, df['Professor_First_Name'].values)
+# professors = np.append(professors, df['Professor_Last_Name'].values)
+# professors = np.append(professors, df['Professor_First_Last_Name'].values)
+# professors = np.append(professors, df['Professor_Last_First_Name'].values)
+# professors_list = list(professors)
+# professors_list = [x for x in professors_list if str(x) != 'nan']
+# for i in range(len(professors_list)):
+#     professors_list[i] = str(professors_list[i]).lower()
+# professors_list[:5]
+
+# possible_rooms = str(df.Room.unique())
+# df['Room_with_Dot'] = (df.Room.astype(str).str[:2]+ '.'+ df.Room.astype(str).str[-2:])
+# possible_rooms = np.append(possible_rooms, df['Room_with_Dot'].values)
+
+# departments = df.Department.unique()
+# out=df['Department'].str.split(': ',expand=True)
+# df['Department_Full']=out[1]
+# #df['Professor_Last_Name']=out[0].str.split(' ').str[0]
+# df['Department_Short'] = out[0]
+# departments = np.append(departments, df['Department_Full'].values)
+# departments = np.append(departments, df['Department_Short'].values)
+
+# Buildings = df.Building.unique()
 
 def get_professor_info(name):
         # look up professor by name
-        professor = df.loc[df['Name'] == name]
+
+        name2 = name.strip()
+        professor = df.loc[df['Professor_First_Last_Name'] == name2]
 
         if professor.empty:
             # professor not found
@@ -97,8 +97,8 @@ def get_professor_info(name):
         office = professor['Office'].iloc[0]
         # add more fields as needed
 
-        # return information as a dictionary
-        return {'department': department, 'office': office}
+        # return information as tuple
+        return department, office
 
 
 class ProfessorCollaboratorsAction(Action):
@@ -107,7 +107,7 @@ class ProfessorCollaboratorsAction(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        df = pd.read_csv('Data_Teachers.csv')
+        #df = pd.read_csv('Data_Teachers.xslx')
               
 
         # Get the professor's name from the user input
@@ -119,7 +119,7 @@ class ProfessorCollaboratorsAction(Action):
         a = np.array((2))
 
         (b,c) = self.get_professor_info(prof)
-        print("Hey, department is",b,"and office is", c)
+        message = f"Hey, department is {b} and office is {c}."
 
 
         # Find the professor in the dataframe
