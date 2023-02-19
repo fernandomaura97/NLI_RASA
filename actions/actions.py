@@ -82,27 +82,28 @@ Buildings = df.Building.unique()
 
 
 
+
+
+def get_professor_info(name):
+        # look up professor by name
+        professor = df.loc[df['Name'] == name]
+
+        if professor.empty:
+            # professor not found
+            return {'error': 'Professor not found'}
+
+        # extract information
+        department = professor['Department'].iloc[0]
+        office = professor['Office'].iloc[0]
+        # add more fields as needed
+
+        # return information as a dictionary
+        return {'department': department, 'office': office}
+
+
 class ProfessorCollaboratorsAction(Action):
     def name(self) -> Text:
         return "action_professor_collaborators"
-
-
-    def get_professor_info(name):
-            # look up professor by name
-            professor = df.loc[df['Name'] == name]
-
-            if professor.empty:
-                # professor not found
-                return {'error': 'Professor not found'}
-
-            # extract information
-            department = professor['Department'].iloc[0]
-            office = professor['Office'].iloc[0]
-            # add more fields as needed
-
-            # return information as a dictionary
-            return {'department': department, 'office': office}
-
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         

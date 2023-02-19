@@ -38,11 +38,12 @@ actions:
 - utter_office_in_building
 - utter_collaborator_slots ###COME BACK TO THIS LATER
 - utter_ferran
-forms: 
-  simple_collaborator_form:
-    required_slots:
-      - professor_name
-      - professor_surname
+
+# forms: 
+#   simple_collaborator_form:
+#     required_slots:
+#       - professor_name
+#       - professor_surname
 
 responses:
   utter_office_in_building:
@@ -108,7 +109,6 @@ nlu:                        ##WHAT IS GOING ON WITH THIS
     - Anders Jonsson
     - Jorge Lobo
     - Pablo Aragón
-    - 
 
 slots:
   professor:
