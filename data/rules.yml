@@ -22,11 +22,11 @@ rules:
   - intent: ask_professor_collaborators
   - action: action_professor_collaborators
 
--rule: Say a teacher's room anytime someone is asking for a professor
+- rule: Say a teacher's room anytime someone is asking for a professor
   steps: 
   - intent: ask_room_professor
   - action: action_department_professor
-  
+
 # - rule: Activate form for professor's collaborators retrieval
 #   steps: 
 #   - intent: ask_professor_collaborators
