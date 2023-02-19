@@ -13,6 +13,7 @@ intents:
 - ask_same_department_professors
 - ask_time
 - ask_url_department
+- ask_professor_collaborators
 - bad_help
 - bot_challenge
 - deny
