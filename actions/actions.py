@@ -178,7 +178,7 @@ class ActionHelloWorld(Action):
         
 class ActionHelloWorld(Action):
 #
-        def name(se f) -> Text:
+        def name(self) -> Text:
             return "action_department_professor"
 #
         def run(self, dispatcher: CollectingDispatcher,

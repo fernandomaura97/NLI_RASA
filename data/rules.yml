@@ -12,16 +12,17 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Activate form for professor's collaborators retrieval
-  steps: 
-  - intent: ask_professor_collaborators
-  - action: simple_collaborator_form
-  - active_loop: simple_collaborator_form
 
 - rule: If someone asks about Ferran, respond
   steps:
     - intent: where_ferran
     - action: utter_ferran 
+
+- rule: Activate form for professor's collaborators retrieval
+  steps: 
+  - intent: ask_professor_collaborators
+  - action: simple_collaborator_form
+  - active_loop: simple_collaborator_form
 
 - rule: Submit form once completed
   condition: 
@@ -32,4 +33,6 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_submit
-  - action: utter_collaborator_slots
+  - intent: affirm
+  - action: action_professor_collaborators
+  - action: utter_collaborator_slots   ##COME BACK TO THIS LATER
