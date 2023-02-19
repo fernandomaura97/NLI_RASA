@@ -83,14 +83,14 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_building_department
-  - action: utter_department_building
+  - action: utter_office_in_building
 
 - story: 5.1 room_of_prof
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_room_professor
-  - action: utter_room_prof
+  - action: utter_professor_room
 
 - story: 4.1 Department of Prof
   steps:
