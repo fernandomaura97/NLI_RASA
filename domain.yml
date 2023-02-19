@@ -88,7 +88,10 @@ responses:
   - text: You requested for {professor_name} {professor_surname}'s collaborators, am I right? 
   utter_collaborator_slots:
   - text: As for your search for {professor_fullname}'s collaborators, they are {colaborator1}, {colaborator2}, and from this University {colaborator_UPF1} and {colaborator_UPF2}
-
+  utter_confirm_department:
+  - text: Indeed, it is found in {room}
+  utter_deny_department: 
+  - text: Nope, there is not such department as {department} in campus
 entities:
 - professor
 - building
@@ -97,10 +100,15 @@ entities:
 - location
 - professor_fullname
 - professor_surname
-nlu:            ##WHAT IS GOING ON WITH THIS
-- lookup: professor
-  examples: ''
-
+nlu:                        ##WHAT IS GOING ON WITH THIS
+- lookup: professor_fullname
+  examples: |
+    - Gergely Neu
+    - Vicenç Gomez
+    - Anders Jonsson
+    - Jorge Lobo
+    - Pablo Aragón
+    - 
 
 slots:
   professor:
