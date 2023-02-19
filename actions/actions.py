@@ -155,7 +155,7 @@ class ProfessorCollaboratorsAction(Action):
         return []
 
 
-class ActionHelloWorld(Action):
+class ActionHelloWorld0(Action):
 
         def name(self) -> Text:
             return "action_hello_world"
@@ -168,7 +168,7 @@ class ActionHelloWorld(Action):
 
                 return []
         
-class ActionHelloWorld(Action):
+class ActionHelloWorld1(Action):
 #
         def name(self) -> Text:
             return "action_give_time"
@@ -181,7 +181,7 @@ class ActionHelloWorld(Action):
 #
                 return []
         
-class ActionHelloWorld(Action):
+class ActionHelloWorld2(Action):
 #
         def name(self) -> Text:
             return "action_department_professor"
@@ -196,6 +196,7 @@ class ActionHelloWorld(Action):
 
                 (b,c) = get_professor_info(prof)
                 message = f"Hey there, department is {b} and office is {c}!."
+                dispatcher.utter_message(text=message)
 
 
 
@@ -218,7 +219,7 @@ class ActionHelloWorld(Action):
 #
                 return []
         
-class ActionHelloWorld(Action):
+class ActionHelloWorld7(Action):
 
      def name(self) -> Text:
          return "action_ask_weather"
@@ -243,7 +244,7 @@ class ActionHelloWorld(Action):
 
                 return []
      
-class ActionHelloWorld(Action):
+class ActionHelloWorld6(Action):
 #
         def name(self) -> Text:
             return "action_fun_fact"

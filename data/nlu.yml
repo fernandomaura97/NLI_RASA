@@ -268,7 +268,7 @@ nlu:
     - This raises only more questions
 - intent: good_help
   examples: |
-    - Thankyou for your help
+    - Thank you for your help
     - You solved all my problems
     - I'm really happy with this answer
     - Your response saved me a lot of times
@@ -279,3 +279,4 @@ nlu:
 - intent: looking for teacher
   examples: |
     - hello, I'm looking for [Albert Bel](professor)
+    - Where is [Ferran Maura](professor)

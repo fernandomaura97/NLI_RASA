@@ -90,7 +90,7 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_room_professor
-  - action: utter_professor_room
+  - action: action_department_professor
 
 - story: 4.1 Department of Prof
   steps:
@@ -178,4 +178,3 @@ stories:
     entities:
     - professor: Albert Bel
   - action: action_department_professor
-  - action: utter_did_that_help
