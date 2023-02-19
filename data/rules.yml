@@ -25,11 +25,11 @@ rules:
 
 - rule: Submit form once completed
   condition: 
-    active_loop: simple_collaborator_form
+  - active_loop: simple_collaborator_form
   steps: 
-    - action: simple_collaborator_form
-    - active_loop: null
-    - slot_was_set:
-      - requested_slot: null
-    - action: utter_submit
-    - action: utter_collaborator_slots
+  - action: simple_collaborator_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_collaborator_slots

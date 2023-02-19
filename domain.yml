@@ -76,10 +76,10 @@ responses:
   - text: Certainly, {professor_fullname} can usually be found in room {room}
   utter_Ferran:
   - text: Ferran is found in room 55.228, although that is not in the CSV everyone's using
-  utter_sumbit:
-  - You requested for {professor_fullname}'s collaborators, am I right? 
-  utter_collaborator_slots:
-  - text: As for your search for {professor_fullname}'s collaborators, they are {colaborator1}, {colaborator2}, and from this University {colaborator_UPF1} and {colaborator_UPF2}
+  #utter_sumbit:
+  #- You requested for {professor_fullname}'s collaborators, am I right? 
+  #utter_collaborator_slots:
+  #- text: As for your search for {professor_fullname}'s collaborators, they are {colaborator1}, {colaborator2}, and from this University {colaborator_UPF1} and {colaborator_UPF2}
 
 entities:
 - professor
