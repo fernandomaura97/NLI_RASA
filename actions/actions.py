@@ -91,7 +91,7 @@ def get_professor_info(name):
 
         if professor.empty:
             # professor not found
-            return "ERROR", "BAD"
+            return 0,1
             # first_name, last_name = name2.split()
             # # first_name2 = df.loc[df['Professor_First_Name']==first_name]
             # last_name2 = df.loc[df['Professor_Last_Name'] == last_name]
@@ -105,7 +105,7 @@ def get_professor_info(name):
         department = professor['Department'].iloc[0]
         office = professor['Room'].iloc[0]
         # add more fields as needed
-
+        
         # return information as tuple
         return department, office
 
@@ -132,8 +132,7 @@ class ProfessorCollaboratorsAction(Action):
         if not prof:
             message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
             dispatcher.utter_message(text= message)
-        
-        
+    
         (b,c) = get_professor_info(prof)
         message = f"Hey, department is {b} and office is {c}."
 
@@ -220,13 +219,13 @@ class ActionHelloWorld2(Action):
             results = fuzzy_search(prof, choices)
             print(results[0][0])
             fuzzyname = results[0][0]
-
+            dispatcher.utter_message(text=f"Hey there, higher coincidence says {fuzzyname}.")
 
             (b,c) = get_professor_info(fuzzyname)
-            if ((b== "ERROR") & c == "BAD"):
-                dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
-                return[]
-            #message = f"Hey there, department is {b} and office is {c}!."
+            if (b == 0):
+                  dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
+                  return[]
+            message = f"Hey there, department is {b} and office is {c}!."
             dispatcher.utter_message(text=f"Hey there, department is {b} and office is {c}!.")
             return[]
 
