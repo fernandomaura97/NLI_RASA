@@ -83,6 +83,14 @@ df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 
 # Buildings = df.Building.unique()
 
+def get_professor_room(name):
+    index_name = name.strip()
+    professor = df[df["Professor_First_Last_Name"] == index_name]
+    #room_number = df.iloc[row_index]['Room']
+    room_number = professor["Room"]
+
+    return room_number     
+
 def get_professor_info(name):
         # look up professor by name
 
@@ -209,16 +217,20 @@ class ActionHelloWorld2(Action):
             choices = df2.tolist()  
 
             results = fuzzy_search(prof, choices)
-            print(results[0][0])
+            print(results)
             fuzzyname = results[0][0]
             dispatcher.utter_message(text=f"Higher coincidence says {fuzzyname}.")
-            df = df2 ##????
+            # df = pd.read_excel("out_good.xlsx") ##????
+
+
             (b,c) = get_professor_info(fuzzyname)
+            dada = get_professor_room(prof)
+            print("BIGCOCK", dada)
             if (b == 0):
                   dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
                   return[]
-            message = f"Hey there, department is {b} and office is {c}!."
-            dispatcher.utter_message(text=f"Hey there, department is {b} and office is {c}!.")
+           #room = df.[]
+            dispatcher.utter_message(text=f"Hey there, department is {b} and the office number is {c}! :).")
             return[]
 
 
