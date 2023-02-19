@@ -118,7 +118,7 @@ class ProfessorCollaboratorsAction(Action):
        
         a = np.array((2))
 
-        (b,c) = self.get_professor_info(prof)
+        (b,c) = get_professor_info(prof)
         message = f"Hey, department is {b} and office is {c}."
 
 
@@ -185,21 +185,36 @@ class ActionHelloWorld(Action):
 #
         def name(self) -> Text:
             return "action_department_professor"
-#
-        def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-                prof =  tracker.get_slot("professor")
-                if not prof:
-                      message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
-                cols = ['Professor','Professor_First_Name','Professor_First_Last_Name','Professor_Last_First_Name','Professor_Last_Name']
-                test_df = df.loc[(df[cols]==prof.upper()).any(axis="columns")]
-                if len(test_df) ==1:
-                    department = test_df['Department']
-                    message = f"Professor {test_df['Professor_First_Last_Name']} is in the {department} department."
-                else:
-                    message = f"Sorry, but I could not find the department of {prof}. I only have then information of the department of the following professors: {df['Professor_First_Last_Name'].values}."      
-                dispatcher.utter_message(text=message)
+        
+        def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            prof =  tracker.get_slot("professor")
+            prof = prof.upper()
+            if not prof:
+                message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
+        
+                a = np.array((2))
+
+                (b,c) = get_professor_info(prof)
+                message = f"Hey there, department is {b} and office is {c}!."
+
+
+
+        # def run(self, dispatcher: CollectingDispatcher,
+        #     tracker: Tracker,
+        #     domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        #         prof =  tracker.get_slot("professor")
+        #         prof = prof.trim()
+        #         if not prof:
+        #               message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
+        #         cols = ['Professor','Professor_First_Name','Professor_First_Last_Name','Professor_Last_First_Name','Professor_Last_Name', 'Room']
+        #         test_df = df.loc[(df[cols]==prof.upper()).any(axis="columns")]
+        #         if len(test_df) ==1:
+        #             department = test_df['Department']
+        #             room = test_df['Room']
+        #             message = f"Professor {test_df['Professor_First_Last_Name']} is in the {department} department, at room {}."
+        #         else:
+        #             message = f"Sorry, but I could not find the department of {prof}. I only have then information of the department of the following professors: {df['Professor_First_Last_Name'].values}."      
+        #         dispatcher.utter_message(text=message)
 #
                 return []
         

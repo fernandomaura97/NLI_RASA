@@ -157,3 +157,25 @@ stories:
   - action: utter_greet
   - intent: bad_help
   - action: utter_office_in_building
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_is_professor
+    entities:
+    - professor: Jorge Lobo
+  - slot_was_set:
+    - professor: Jorge Lobo
+  - action: action_department_professor
+  - intent: good_help
+  - action: action_fun_fact
+  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - intent: looking for teacher
+    entities:
+    - professor: Albert Bel
+  - action: action_department_professor
+  - action: utter_did_that_help

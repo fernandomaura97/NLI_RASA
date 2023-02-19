@@ -72,14 +72,12 @@ nlu:
     - Is there a [AI&ML](department) available?
     - Is any entity focussed on [AI&ML](department)
     - Do you have an [AI&ML](department)?
-
 - intent: ask_professor_collaborators
-  examples: | 
+  examples: |
     - I'm interested in looking up [Jorge Lobo](professor)'s contributions
     - I want to look up [Vicenç Gomez](professor)'s collaborators
     - Search me for studies from [Anderss Jonson](professor) and his peers
     - Who are the peers of [Boris Bellalta](professor) in research?
-
 - intent: ask_is_professor
   examples: |
     - Is [Jorge Lobe](professor) a professor?
@@ -94,12 +92,13 @@ nlu:
     - Can I find [Jorge Lobo](professor)
     - Is [Jorge Lobo](professor) in this company
     - Is [Jorge Lobo](professor) of the department [AI&ML](department) here?
+    - I'm looking for [Jorge Lobo](professor)
 - intent: ask_same_department_proffesors
   examples: |
-    - Is [Jorge Lobe](professor) in the same department as Jorge Lobe?
-    - Are [Jorge Lobe](professor) and Jorge Lobe in the same research group?
+    - Is [Gergely Neu](professor) in the same department as Jorge Lobe?
+    - Are [Jorge Lobo](professor) and Jorge Lobe in the same research group?
     - Is the faculty of [Jorge Lobe](professor) and Jorge Lobe the same?
-    - Is [Jorge Lobe](professor) in the [AI&ML department](department) with Jorge Lobe?
+    - Is [Davinia Hernandez Leo](professor) in the [AI&ML department](department) with Jorge Lobe?
     - Are [Jorge Lobe](professor) and Jorge Lobe both in [AI&ML research group](department)?
     - Are [Jorge Lobe](professor) and Jorge Lobe collegues
     - Do [Jorge Lobe](professor) and Jorge Lobe work together?
@@ -132,8 +131,9 @@ nlu:
     - Where is the office of [Jorge Lobe](professor)?
     - In which office is [Jorge Lobe](professor)?
     - Room [Jorge Lobe](professor)?
-    - Where am I most likely to find professor [Jorge Lobe](professor)?
-    - Where do i find Mr. [Lobe](professor)?
+    - I'm looking for [Boris Bellalta](professor)
+    - Where am I most likely to find professor [Jorge Lobo](professor)?
+    - Where do i find [Leo Wanner](professor)?
 - intent: ask_room_department
   examples: |
     - Where is the department of [AI&ML](department) located?
@@ -184,7 +184,6 @@ nlu:
     - Who created you
     - Who came up with this chatbot?
     - Who are you?
-    - Do you know the department of the prof?
 - intent: user_asks_weather
   examples: |
     - What's the weather in [Berlin](location) at the moment?
@@ -267,7 +266,6 @@ nlu:
     - I'm not satisfied with this answer
     - You are inaccurate
     - This raises only more questions
-    - I'm looking for anderss jonson
 - intent: good_help
   examples: |
     - Thankyou for your help
@@ -277,3 +275,7 @@ nlu:
     - I will recommend you to my friends
     - Thankyou for your help chatbot
     - Thankyou see you next time
+    - thank you so much!
+- intent: looking for teacher
+  examples: |
+    - hello, I'm looking for [Albert Bel](professor)

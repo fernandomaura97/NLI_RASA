@@ -8,12 +8,12 @@ intents:
 - ask_is_professor
 - ask_office_building
 - ask_other_professor_in_department
+- ask_professor_collaborators
 - ask_room_department
 - ask_room_professor
 - ask_same_department_professors
 - ask_time
 - ask_url_department
-- ask_professor_collaborators
 - bad_help
 - bot_challenge
 - deny
@@ -21,6 +21,7 @@ intents:
 - good_help
 - goodbye
 - greet
+- looking for teacher
 - mood_great
 - mood_unhappy
 - name
@@ -34,17 +35,16 @@ actions:
 - action_give_time
 - action_hello_world
 - action_professor_collaborators
+- utter_collaborator_slots
+- utter_did_that_help
+- utter_ferran
+- utter_goodbye
 - utter_greet
 - utter_office_in_building
-- utter_collaborator_slots ###COME BACK TO THIS LATER
-- utter_ferran
-
-# forms: 
-#   simple_collaborator_form:
-#     required_slots:
-#       - professor_name
-#       - professor_surname
-
+forms:
+  simple_collaborator_form:
+    required_slots:
+    - professor_name
 responses:
   utter_office_in_building:
   - text: The room is located in {building} of the Campus.
@@ -86,12 +86,12 @@ responses:
   utter_ferran:
   - text: Ferran is found in room 55.228, although that is not in the CSV everyone's using
   utter_submit:
-  - text: You requested for {professor_name} {professor_surname}'s collaborators, am I right? 
+  - text: You requested for {professor_name} {professor_surname}'s collaborators, am I right?
   utter_collaborator_slots:
   - text: As for your search for {professor_fullname}'s collaborators, they are {colaborator1}, {colaborator2}, and from this University {colaborator_UPF1} and {colaborator_UPF2}
   utter_confirm_department:
   - text: Indeed, it is found in {room}
-  utter_deny_department: 
+  utter_deny_department:
   - text: Nope, there is not such department as {department} in campus
 entities:
 - professor
@@ -101,15 +101,9 @@ entities:
 - location
 - professor_fullname
 - professor_surname
-nlu:                        ##WHAT IS GOING ON WITH THIS
+nlu:
 - lookup: professor_fullname
-  examples: |
-    - Gergely Neu
-    - Vicenç Gomez
-    - Anders Jonsson
-    - Jorge Lobo
-    - Pablo Aragón
-
+  examples: "- Gergely Neu\n- Vicenç Gomez\n- Anders Jonsson\n- Jorge Lobo\n- Pablo Aragón\n- Davinia Hernandez Leo\n"
 slots:
   professor:
     type: text
@@ -126,7 +120,7 @@ slots:
     mappings:
     - type: from_entity
       entity: professor_fullname
-  professor_surname: 
+  professor_surname:
     type: text
     mappings:
     - type: from_entity
