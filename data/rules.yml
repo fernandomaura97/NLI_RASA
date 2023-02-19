@@ -17,3 +17,19 @@ rules:
   - intent: ask_professor_collaborators
   - action: simple_collaborator_form
   - active_loop: simple_collaborator_form
+
+-rule: If someone asks about Ferran, respond
+  steps:
+    - intent: where_ferran
+    - action: utter_ferran 
+
+-rule: Submit form once completed
+  condition: 
+    active_loop: simple_collaborator_form
+  steps: 
+  -action: simple_collaborator_form
+  -active_loop: null
+  -slot_was_set:
+    -requested_slot: null
+  -action: utter_submit
+  -action: utter_collaborator_slots

@@ -35,21 +35,14 @@ actions:
 - action_hello_world
 - utter_greet
 - utter_office_in_building
+- utter_collaborator_slots ###COME BACK TO THIS LATER
 responses:
-  utter_deny_department:
-  - text: There is unfortunately no ... department on the UPF, but we have department for Department_Full
-  utter_confirm_department:
-  - text: Yes there is an department for .... on the UPF
   utter_office_in_building:
-  - text: The room is located in the Poblenue Campus.
+  - text: The room is located in {building} of the Campus.
   utter_no_problem:
   - text: It was a pleasure to help you. I can't wait to speak you again if you have some questions
   utter_repeat_question:
   - text: Can you please reformulate your question. I did not understand you correctly, sorry
-  utter_department_building:
-  - text: The AI&ML department is in the Poblenue Campus.
-  utter_room_prof:
-  - text: Professor Jorge Lob is in the AI&ML Department.
   utter_url_department:
   - text: 'The URL is: https://www.upf.edu/web/iis/academic-information.'
   utter_prof_is_college:
@@ -82,7 +75,12 @@ responses:
   utter_professor_room:
   - text: Certainly, {professor_fullname} can usually be found in room {room}
   utter_Ferran:
-  - text: Ferran is found in room 55.228, although that is not in the CSV
+  - text: Ferran is found in room 55.228, although that is not in the CSV everyone's using
+  utter_sumbit:
+  - You requested for {professor_fullname}'s collaborators, am I right? 
+  utter_collaborator_slots:
+  - text: As for your search for {professor_fullname}'s collaborators, they are {colaborator1}, {colaborator2}, and from this University {colaborator_UPF1} and {colaborator_UPF2}
+
 entities:
 - professor
 - building

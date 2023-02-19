@@ -72,6 +72,14 @@ nlu:
     - Is there a [AI&ML](department) available?
     - Is any entity focussed on [AI&ML](department)
     - Do you have an [AI&ML](department)?
+
+- intent: ask_professor_collaborators
+  examples: | 
+    - I'm interested in looking up [Jorge Lobo](professor)'s contributions
+    - I want to look up [Vicenç Gomez](professor)'s collaborators
+    - Search me for studies from [Anderss Jonson](professor) and his peers
+    - Who are the peers of [Boris Bellalta](professor) in research?
+
 - intent: ask_is_professor
   examples: |
     - Is [Jorge Lobe](professor) a professor?
