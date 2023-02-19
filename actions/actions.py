@@ -94,7 +94,7 @@ def get_professor_info(name):
 
         # extract information
         department = professor['Department'].iloc[0]
-        office = professor['Office'].iloc[0]
+        office = professor['Room'].iloc[0]
         # add more fields as needed
 
         # return information as tuple
@@ -108,10 +108,9 @@ class ProfessorCollaboratorsAction(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         #df = pd.read_csv('Data_Teachers.xslx')
-              
-
         # Get the professor's name from the user input
-       
+        df = pd.read_excel("out_good.xlsx")
+        df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
         prof =  tracker.get_slot("professor")
         if not prof:
             message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
@@ -189,14 +188,15 @@ class ActionHelloWorld2(Action):
         def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             prof =  tracker.get_slot("professor")
             prof = prof.upper()
+            df = pd.read_excel("out_good.xlsx")
+            df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
             if not prof:
                 message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
-        
-                a = np.array((2))
-
-                (b,c) = get_professor_info(prof)
-                message = f"Hey there, department is {b} and office is {c}!."
-                dispatcher.utter_message(text=message)
+            # a = np.array((2))
+            (b,c) = get_professor_info(prof)
+            #message = f"Hey there, department is {b} and office is {c}!."
+            dispatcher.utter_message(text=f"Hey there, department is {b} and office is {c}!.")
+            return[]
 
 
 
@@ -216,8 +216,7 @@ class ActionHelloWorld2(Action):
         #         else:
         #             message = f"Sorry, but I could not find the department of {prof}. I only have then information of the department of the following professors: {df['Professor_First_Last_Name'].values}."      
         #         dispatcher.utter_message(text=message)
-#
-                return []
+
         
 class ActionHelloWorld7(Action):
 
@@ -252,7 +251,7 @@ class ActionHelloWorld6(Action):
         def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-                fun_facts = ["Niels his father is a farmer!"]
+                fun_facts = ["Niels, his father is a farmer!", "Ferran's grandad was a farmer"]
                 fun_fact = random.choice(fun_facts)
                 dispatcher.utter_message(text=f"{fun_fact}")
 #
