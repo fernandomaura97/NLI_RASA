@@ -92,14 +92,6 @@ def get_professor_info(name):
         if professor.empty:
             # professor not found
             return 0,1
-            # first_name, last_name = name2.split()
-            # # first_name2 = df.loc[df['Professor_First_Name']==first_name]
-            # last_name2 = df.loc[df['Professor_Last_Name'] == last_name]
-            # department = last_name2['Department'].iloc[0]
-            # office = last_name2['Room'].iloc[0]
-            # print("Maybe this would give erroneous results")
-            # return department, office
-            ##if they coincide, return room 
 
         # extract information
         department = professor['Department'].iloc[0]
@@ -219,8 +211,8 @@ class ActionHelloWorld2(Action):
             results = fuzzy_search(prof, choices)
             print(results[0][0])
             fuzzyname = results[0][0]
-            dispatcher.utter_message(text=f"Hey there, higher coincidence says {fuzzyname}.")
-
+            dispatcher.utter_message(text=f"Higher coincidence says {fuzzyname}.")
+            df = df2 ##????
             (b,c) = get_professor_info(fuzzyname)
             if (b == 0):
                   dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
