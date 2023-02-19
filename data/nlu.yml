@@ -78,31 +78,31 @@ nlu:
     - I want to look up [Vicenç Gomez](professor)'s collaborators
     - Search me for studies from [Anderss Jonson](professor) and his peers
     - Who are the peers of [Boris Bellalta](professor) in research?
-- intent: ask_is_professor
-  examples: |
-    - Is [Jorge Lobe](professor) a professor?
-    - Is [Jorge Lobe](professor) teaching
-    - Is [Jorge Lobe](professor) working on this university?
-    - Is [Jorge Lobe](professor) working on the UPF?
-    - Is there a professor called [Jorge Lobe](professor)?
-    - Is [Jorge Lobe](professor) working here?
-    - [Jorge Lobo](professor) professor?
-    - Works [Jorge Lobo](professor) here?
-    - Do you know [Jorge Lobo](professor)
-    - Can I find [Jorge Lobo](professor)
-    - Is [Jorge Lobo](professor) in this company
-    - Is [Jorge Lobo](professor) of the department [AI&ML](department) here?
-    - I'm looking for [Jorge Lobo](professor)
-- intent: ask_same_department_proffesors
-  examples: |
-    - Is [Gergely Neu](professor) in the same department as Jorge Lobe?
-    - Are [Jorge Lobo](professor) and Jorge Lobe in the same research group?
-    - Is the faculty of [Jorge Lobe](professor) and Jorge Lobe the same?
-    - Is [Davinia Hernandez Leo](professor) in the [AI&ML department](department) with Jorge Lobe?
-    - Are [Jorge Lobe](professor) and Jorge Lobe both in [AI&ML research group](department)?
-    - Are [Jorge Lobe](professor) and Jorge Lobe collegues
-    - Do [Jorge Lobe](professor) and Jorge Lobe work together?
-    - Is [Jorge Lobe](professor) closely related to Jorge Lobe?
+# - intent: ask_is_professor
+#   examples: |
+#     - Is [Jorge Lobe](professor) a professor?
+#     - Is [Jorge Lobe](professor) teaching
+#     - Is [Jorge Lobe](professor) working on this university?
+#     - Is [Jorge Lobe](professor) working on the UPF?
+#     - Is there a professor called [Jorge Lobe](professor)?
+#     - Is [Jorge Lobe](professor) working here?
+#     - [Jorge Lobo](professor) professor?
+#     - Works [Jorge Lobo](professor) here?
+#     - Do you know [Jorge Lobo](professor)
+#     - Can I find [Jorge Lobo](professor)
+#     - Is [Jorge Lobo](professor) in this company
+#     - Is [Jorge Lobo](professor) of the department [AI&ML](department) here?
+#     - I'm looking for [Jorge Lobo](professor)
+# - intent: ask_same_department_proffesors
+#   examples: |
+# #    - Is [Gergely Neu](professor) in the same department as Jorge Lobe?
+# #    - Are [Jorge Lobo](professor) and Jorge Lobe in the same research group?
+# #    - Is the faculty of [Jorge Lobe](professor) and Jorge Lobe the same?
+#     - Is [Davinia Hernandez Leo](professor) in the [AI&ML department](department) with Jorge Lobe?
+#     - Are [Jorge Lobe](professor) and Jorge Lobe both in [AI&ML research group](department)?
+#     - Are [Jorge Lobe](professor) and Jorge Lobe collegues
+#     - Do [Jorge Lobe](professor) and Jorge Lobe work together?
+#     - Is [Jorge Lobe](professor) closely related to Jorge Lobe?
 - intent: ask_url_department
   examples: |
     - What is the website of the [AI&ML](department) department
@@ -125,11 +125,11 @@ nlu:
     - In which campus of UPF is the [AI&ML](deparment)?
 - intent: ask_room_professor
   examples: |
-    - Where is the room of [Jorge Lobe](professor) located?
+    - Where is the room of [Jorge Lobe](professor)located?
     - Where can i find the [Jorge Lobe](professor)?
     - Which is the room number of [Jorge Lobe](professor)?
-    - Where is the office of [Jorge Lobe](professor)?
-    - In which office is [Jorge Lobe](professor)?
+    - Where is the office of [Vicente Gomez](professor)?
+    - In which office is [Albert Bel Pereira](professor)?
     - Room [Jorge Lobe](professor)?
     - I'm looking for [Boris Bellalta](professor)
     - Where am I most likely to find professor [Jorge Lobo](professor)?

@@ -90,7 +90,15 @@ def get_professor_info(name):
 
         if professor.empty:
             # professor not found
-            return {'error': 'Professor not found'}
+            return "ERROR", "BAD"
+            # first_name, last_name = name2.split()
+            # # first_name2 = df.loc[df['Professor_First_Name']==first_name]
+            # last_name2 = df.loc[df['Professor_Last_Name'] == last_name]
+            # department = last_name2['Department'].iloc[0]
+            # office = last_name2['Room'].iloc[0]
+            # print("Maybe this would give erroneous results")
+            # return department, office
+            ##if they coincide, return room 
 
         # extract information
         department = professor['Department'].iloc[0]
@@ -181,7 +189,7 @@ class ActionHelloWorld1(Action):
                 return []
         
 class ActionHelloWorld2(Action):
-#
+#       
         def name(self) -> Text:
             return "action_department_professor"
         
@@ -192,8 +200,12 @@ class ActionHelloWorld2(Action):
             df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
             if not prof:
                 message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
+                dispatcher.utter_message(text = message)
             # a = np.array((2))
             (b,c) = get_professor_info(prof)
+            if ((b== "ERROR") & c == "BAD"):
+                dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
+                return[]
             #message = f"Hey there, department is {b} and office is {c}!."
             dispatcher.utter_message(text=f"Hey there, department is {b} and office is {c}!.")
             return[]

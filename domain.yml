@@ -100,7 +100,7 @@ entities:
 - room
 - location
 - professor_fullname
-#- professor_surname
+- professor_surname
 nlu:
 - lookup: professor_fullname
   examples: "- Gergely Neu\n- Vicenç Gomez\n- Anders Jonsson\n- Jorge Lobo\n- Pablo Aragón\n- Davinia Hernandez Leo\n- Albert Bel\n- Boris Bellalta\n- Vladimir Estivill"
