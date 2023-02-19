@@ -1,0 +1,125 @@
+version: "3.1"
+
+stories:
+
+- story: 13.1 Fun Fact
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: fun_fact
+  - action: action_fun_fact
+
+- story: 12.1 Is there an department for (ANSWER NO)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_is_department
+  - action: utter_deny_department
+
+- story: 11.1 Is there an department for (ANSWERS YES)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_is_department
+  - action: utter_confirm_department
+
+- story: 10.1 other professor also in department
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_other_professor_in_department
+  - action: utter_prof_is_college
+
+- story: 9.1 ask url department
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_url_department
+  - action: utter_url_department
+
+- story: 8.1 room building
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_office_building
+  - action: utter_office_in_building
+
+- story: 7.1 room department
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_room_department
+  - action: utter_room_department
+
+- story: 6.1 building of the department
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_building_department
+  - action: utter_department_building
+
+- story: 5.1 room_of_prof
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_room_professor
+  - action: utter_room_prof
+
+- story: 4.1 Department of Prof
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_department_professor
+  - action: action_department_professor
+
+- story: 3.1 who is the developer
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_developer_chatbot
+  - action: utter_who_is_developer
+
+- story: 2.1 What is the weather
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_ask_weather
+  - action: action_ask_weather
+
+- story: 1.1 What is Time
+  steps:
+  - intent: ask_time
+  - action: action_give_time
+
+- story: name_There
+  steps:
+  - intent: name
+  - action: action_hello_world
+  - action: utter_did_that_help
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
