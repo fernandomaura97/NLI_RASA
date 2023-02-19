@@ -101,6 +101,7 @@ entities:
 - location
 - professor_fullname
 - professor_surname
+
 nlu:
 - lookup: professor_fullname
   examples: "- Gergely Neu\n- Vicenç Gomez\n- Anders Jonsson\n- Jorge Lobo\n- Pablo Aragón\n- Davinia Hernandez Leo\n- Albert Bel\n- Boris Bellalta\n- Vladimir Estivill"
@@ -124,7 +125,7 @@ slots:
     type: text
     mappings:
     - type: from_entity
-      entity: profesor_surname
+      entity: professor_surname
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

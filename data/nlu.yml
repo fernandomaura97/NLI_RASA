@@ -125,7 +125,7 @@ nlu:
     - In which campus of UPF is the [AI&ML](deparment)?
 - intent: ask_room_professor
   examples: |
-    - Where is the room of [Jorge Lobe](professor)located?
+    - Where is the room of [Jorge Lobe](professor) located?
     - Where can i find the [Jorge Lobe](professor)?
     - Which is the room number of [Jorge Lobe](professor)?
     - Where is the office of [Vicente Gomez](professor)?

@@ -35,7 +35,8 @@ import numpy as np
 import pandas as pd
 from pyowm import OWM #weather API
 import random
-
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 import scholarly
 
 key_weather = "9f6f77317e172b4aed01498eefd4ee96"
@@ -108,6 +109,14 @@ def get_professor_info(name):
         # return information as tuple
         return department, office
 
+def fuzzy_search(query, choices, scorer=fuzz.ratio, cutoff=50):
+    results = []
+    for choice in choices:
+        score = scorer(query, choice)
+        if score >= cutoff:
+            results.append((choice, score))
+    return sorted(results, key=lambda x: x[1], reverse=True)
+
 
 class ProfessorCollaboratorsAction(Action):
     def name(self) -> Text:
@@ -122,9 +131,9 @@ class ProfessorCollaboratorsAction(Action):
         prof =  tracker.get_slot("professor")
         if not prof:
             message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
-       
-        a = np.array((2))
-
+            dispatcher.utter_message(text= message)
+        
+        
         (b,c) = get_professor_info(prof)
         message = f"Hey, department is {b} and office is {c}."
 
@@ -196,13 +205,24 @@ class ActionHelloWorld2(Action):
         def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             prof =  tracker.get_slot("professor")
             prof = prof.upper()
+
+            
             df = pd.read_excel("out_good.xlsx")
             df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+            
             if not prof:
                 message =f"I did not get the professor correctly. I have information about the following proffesors: {df['Professor_First_Last_Name'].values}."
                 dispatcher.utter_message(text = message)
-            # a = np.array((2))
-            (b,c) = get_professor_info(prof)
+            
+            df2 = df['Professor_First_Last_Name'].dropna()
+            choices = df2.tolist()  
+
+            results = fuzzy_search(prof, choices)
+            print(results[0][0])
+            fuzzyname = results[0][0]
+
+
+            (b,c) = get_professor_info(fuzzyname)
             if ((b== "ERROR") & c == "BAD"):
                 dispatcher.utter_message(text=f"ERROR! I understood {prof}.")
                 return[]
